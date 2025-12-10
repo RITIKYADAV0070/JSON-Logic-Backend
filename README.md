@@ -1,4 +1,4 @@
-#🧠 JSON Logic Rule Generator — Backend (FastAPI + OpenRouter + Embeddings + RAG)
+#🧠 JSON Logic Rule Generator — Backend (FastAPI + OpenRouter + Embeddings + RAG)#
 
 This backend powers the JSON Logic Rule Generator, converting natural-language credit policies into JSON Logic using:
 
