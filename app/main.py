@@ -15,11 +15,12 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# ✅ FIXED CORS: REQUIRED FOR DEPLOYED FRONTEND
+# FIXED CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://json-logic-frontend-git-main-ritik-yadavs-projects-ddbd3c9f.vercel.app",
+        "https://json-logic-frontend.vercel.app",
         "http://localhost:5173",
         "*"
     ],
