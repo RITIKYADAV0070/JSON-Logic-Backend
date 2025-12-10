@@ -1,4 +1,3 @@
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
@@ -16,12 +15,13 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# ✅ FIXED CORS: REQUIRED FOR DEPLOYED FRONTEND
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://json-logic-frontend-git-main-ritik-yadavs-projects-ddbd3c9f.vercel.app",  # your live frontend
-        "http://localhost:5173",  # local dev
-        "*",  # fallback
+        "https://json-logic-frontend-git-main-ritik-yadavs-projects-ddbd3c9f.vercel.app",
+        "http://localhost:5173",
+        "*"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -40,12 +40,13 @@ def generate_rule(payload: GenerateRuleRequest):
         ctx_docs: List[str] = payload.context_docs or []
         result = generator.generate(payload.prompt, ctx_docs)
         return result
+
     except ValueError as ve:
-        # mapping / validation error
         try:
             detail = ve.args[0]
         except IndexError:
             detail = str(ve)
         raise HTTPException(status_code=422, detail=detail)
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
