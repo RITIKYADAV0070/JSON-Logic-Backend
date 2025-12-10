@@ -18,7 +18,11 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
+    allow_origins=[
+        "https://json-logic-frontend-git-main-ritik-yadavs-projects-ddbd3c9f.vercel.app",  # your live frontend
+        "http://localhost:5173",  # local dev
+        "*",  # fallback
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
